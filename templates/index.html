@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduGenie - AI Learning Assistant</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <h1>EduGenie</h1>
+            <p>Google Gemini Powered Learning Assistant</p>
+        </header>
+
+
+        <!-- Five Learning Tools -->
+        <section class="tools">
+
+            <div class="tool-card">
+                <div class="tool-icon">💡</div>
+                <h3>Question & Answer</h3>
+                <p>Ask questions and get clear, AI-powered answers.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">📚</div>
+                <h3>Explain a Topic</h3>
+                <p>Understand difficult topics with simple explanations.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">🧠</div>
+                <h3>Generate Quiz</h3>
+                <p>Test your knowledge with AI-generated questions.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">📝</div>
+                <h3>Summarize Text</h3>
+                <p>Turn lengthy study material into concise summaries.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">🚀</div>
+                <h3>Learning Path</h3>
+                <p>Get a structured path from beginner to advanced.</p>
+            </div>
+
+        </section>
+
+
+        <!-- Main Tool -->
+        <section class="card">
+
+            <form action="/process" method="post">
+
+                <label for="task">
+                    Choose a Learning Tool
+                </label>
+
+                <select name="task" id="task" required>
+
+                    <option value="">
+                        -- Select a Tool --
+                    </option>
+
+                    <option value="qa">
+                        💡 Question & Answer
+                    </option>
+
+                    <option value="explain">
+                        📚 Explain a Topic
+                    </option>
+
+                    <option value="quiz">
+                        🧠 Generate Quiz
+                    </option>
+
+                    <option value="summarize">
+                        📝 Summarize Text
+                    </option>
+
+                    <option value="recommend">
+                        🚀 Learning Path
+                    </option>
+
+                </select>
+
+
+                <label for="input_text">
+                    Enter your topic, question, or text
+                </label>
+
+                <textarea
+                    name="input_text"
+                    id="input_text"
+                    rows="8"
+                    placeholder="Enter your content here..."
+                    required
+                >{{ input_text }}</textarea>
+
+
+                <button type="submit">
+                    Generate Answer
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Result -->
+        {% if result is not none %}
+
+        <section class="result">
+
+            <h2>✨ EduGenie Result</h2>
+
+            <div class="result-box">
+                <pre>{{ result }}</pre>
+            </div>
+
+        </section>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
